@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "minepickup",
+  "version": "${version}",
+  "name": "Minepickup",
+  "description": "A Fabric Minecraft mod that makes you pick up items that you mine.",
+  "authors": [
+    "kabanod1m"
+  ],
+  "contact": {
+    "website": "winglessbirds.org",
+    "repo": "https://github.com/kabanod1m/Minepickup"
+  },
+  "license": "MIT",
+  "icon": "assets/minepickup/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "org.winglessbirds.minepickup.client.MinepickupClient"
+    ],
+    "main": [
+      "org.winglessbirds.minepickup.Minepickup"
+    ],
+    "modmenu": [
+      "org.winglessbirds.minepickup.config.ModMenuIntegration"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}",
+    "cloth-config2": ">=${cloth_config_version}"
+  }
+}

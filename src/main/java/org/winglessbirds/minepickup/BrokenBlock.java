@@ -7,7 +7,6 @@ import net.minecraft.network.packet.s2c.play.ItemPickupAnimationS2CPacket;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.registry.Registries;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
@@ -43,8 +42,9 @@ public class BrokenBlock {
                 return true;
             }
 
+            String firstDrop = Registries.ITEM.getId(drops.get(drops.size() - 1).getStack().getItem()).toString();
             for (String s : Minepickup.CFG.itemBlacklist) { // checks if the first drop is within the blacklist, if it is, stops block ticking immediately, preventing further pickups
-                if (s.equalsIgnoreCase(Registries.ITEM.getId(drops.get(drops.size() - 1).getStack().getItem()).toString())) { // is it okay to ignore case? I've never seen an uppercase letter in minecraft's namespaced ids
+                if (s.equalsIgnoreCase(firstDrop)) { // is it okay to ignore case? I've never seen an uppercase letter in minecraft's namespaced ids
                     return true;
                 }
             }

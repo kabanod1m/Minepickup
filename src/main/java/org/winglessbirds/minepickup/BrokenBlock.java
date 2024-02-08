@@ -51,7 +51,7 @@ public class BrokenBlock {
 
             for (ListIterator<ItemEntity> i = drops.listIterator(drops.size()); i.hasPrevious(); ) {
                 ItemEntity item = i.previous();
-                //Minepickup.LOG.debug("Got: " + Registries.ITEM.getId(item.getStack().getItem()));
+                Minepickup.LOG.debug("Got: " + Registries.ITEM.getId(item.getStack().getItem()));
 
                 if (item.age >= timeToPickUp + 1) {
                     Minepickup.LOG.debug("Could not pick up item! Item type: " + Registries.ITEM.getId(item.getStack().getItem()) + "item age: " + item.age + ", time to pick up: " + timeToPickUp);

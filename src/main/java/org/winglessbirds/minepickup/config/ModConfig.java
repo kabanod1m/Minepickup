@@ -23,6 +23,9 @@ public class ModConfig implements ConfigData {
     @ConfigEntry.Gui.EnumHandler(option = ConfigEntry.Gui.EnumHandler.EnumDisplayOption.BUTTON)
     public PickupModeEnum pickupMode = PickupModeEnum.FIRST_ONLY;
 
+    @Comment("Never automatically pick up drops from listed blocks, format: namespace:block (minecraft:redstone_ore)")
+    public List<String> blockBlacklist = new ArrayList<>();
+
     @Comment("Never automatically pick up listed drops, format: namespace:item (minecraft:redstone)")
     public List<String> itemBlacklist = new ArrayList<>();
 }

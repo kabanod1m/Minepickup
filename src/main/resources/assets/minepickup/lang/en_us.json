@@ -2,5 +2,6 @@
   "text.autoconfig.minepickup.title": "Minepickup Config",
   "text.autoconfig.minepickup.option.modEnabled": "Enable mod",
   "text.autoconfig.minepickup.option.pickupMode": "Multiple drops handling",
-  "text.autoconfig.minepickup.option.itemBlacklist": "Block blacklist"
+  "text.autoconfig.minepickup.option.blockBlacklist": "Block blacklist",
+  "text.autoconfig.minepickup.option.itemBlacklist": "Item blacklist"
 }

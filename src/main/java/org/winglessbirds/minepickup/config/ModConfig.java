@@ -8,7 +8,7 @@ import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.Comment;
 import java.util.ArrayList;
 import java.util.List;
 
-@Config(name = "minepickup")
+@Config(name = org.winglessbirds.minepickup.Minepickup.MODID)
 @Config.Gui.Background("minecraft:textures/block/dirt.png")
 public class ModConfig implements ConfigData {
 

@@ -16,7 +16,8 @@ import org.winglessbirds.minepickup.event.TickHandler;
 
 public class Minepickup implements ModInitializer {
 
-    public static final Logger LOG = LoggerFactory.getLogger("minepickup");
+    public static final String MODID = "minepickup";
+    public static final Logger LOG = LoggerFactory.getLogger(MODID);
     public static ModConfig CFG = new ModConfig();
 
     @Override

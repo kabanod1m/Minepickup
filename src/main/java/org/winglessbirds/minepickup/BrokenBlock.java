@@ -3,10 +3,8 @@ package org.winglessbirds.minepickup;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.packet.s2c.play.ItemPickupAnimationS2CPacket;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.registry.Registries;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
@@ -58,10 +56,16 @@ public class BrokenBlock {
                     continue;
                 }
 
+                // pick up logic
                 ItemStack stack = item.getStack();
-                owner.getInventory().insertStack(stack);
-                ((ServerWorld) world).getChunkManager().sendToNearbyPlayers(item, new ItemPickupAnimationS2CPacket(item.getId(), owner.getId(), stack.getCount())); // from LivingEntity#snedPickup
-                item.discard();
+                int amount = stack.getCount();
+                if ((item.getOwner() == null || item.getOwner().getUuid().equals(owner.getUuid())) && owner.getInventory().insertStack(stack)) {
+                    owner.sendPickup(item, amount);
+                    if (stack.isEmpty()) {
+                        item.discard();
+                        stack.setCount(amount);
+                    }
+                }
 
                 if (Minepickup.CFG.pickupMode.equals(ModConfig.PickupModeEnum.FIRST_ONLY)) {
                     return true;
@@ -77,9 +81,14 @@ public class BrokenBlock {
                 }
 
                 ItemStack stack = item.getStack();
-                owner.getInventory().insertStack(stack);
-                ((ServerWorld) world).getChunkManager().sendToNearbyPlayers(item, new ItemPickupAnimationS2CPacket(item.getId(), owner.getId(), stack.getCount())); // from LivingEntity#snedPickup
-                item.discard();
+                int amount = stack.getCount();
+                if ((item.getOwner() == null || item.getOwner().getUuid().equals(owner.getUuid())) && owner.getInventory().insertStack(stack)) {
+                    owner.sendPickup(item, amount);
+                    if (stack.isEmpty()) {
+                        item.discard();
+                        stack.setCount(amount);
+                    }
+                }
             });*/
             return true;
         }

@@ -5,6 +5,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.registry.Registries;
+import net.minecraft.stat.Stats;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
@@ -66,6 +67,8 @@ public class BrokenBlock {
                         stack.setCount(amount);
                     }
                 }
+                owner.increaseStat(Stats.PICKED_UP.getOrCreateStat(stack.getItem()), amount);
+                owner.triggerItemPickedUpByEntityCriteria(item);
 
                 if (Minepickup.CFG.pickupMode.equals(ModConfig.PickupModeEnum.FIRST_ONLY)) {
                     return true;
@@ -89,6 +92,8 @@ public class BrokenBlock {
                         stack.setCount(amount);
                     }
                 }
+                owner.increaseStat(Stats.PICKED_UP.getOrCreateStat(stack.getItem()), amount);
+                owner.triggerItemPickedUpByEntityCriteria(item);
             });*/
             return true;
         }
